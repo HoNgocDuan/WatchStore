@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+<div class="content" layout:fragment="content">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Manufacturer</h4>
+<!--                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create</button>-->
+                        <button>
+                            <a id="manu-create">Them</a>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table" id="manu_list">
+                                <thead class=" text-primary">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+
+                                </th>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<!--<div id="myModal" class="modal fade" role="dialog">-->
+<!--    <div class="modal-dialog">-->
+
+<!--        &lt;!&ndash; Modal content&ndash;&gt;-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--                <h4 class="modal-title">Them moi</h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <div class="container-fluid">-->
+<!--                    <form id="form-create-manu">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-md-6">-->
+<!--                                <div class="form-group">-->
+<!--                                    <label class="bmd-label-floating">Id</label>-->
+<!--                                    <input type="text" class="form-control">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-md-12">-->
+<!--                                <div class="form-group">-->
+<!--                                    <label class="bmd-label-floating">Manufacturer name</label>-->
+<!--                                    <input type="text" class="form-control" id="manu-name">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Them</button>-->
+<!--                        <div class="clearfix"></div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+</body>
+</html>

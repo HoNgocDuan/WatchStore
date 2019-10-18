@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Mirrored from ace.jeka.by/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Jan 2019 10:30:06 GMT -->
+<body class="login-layout">
+<div class="main-container">
+    <form th:action="@{/login}" method="POST">
+    <fieldset>
+        <label class="block clearfix">
+<span class="block input-icon input-icon-right">
+	<input type="text" class="form-control" placeholder="Username" name="username"/>
+	<i class="ace-icon fa fa-user"></i>
+</span>
+        </label>
+
+        <label class="block clearfix">
+<span class="block input-icon input-icon-right">
+	<input type="password" class="form-control" placeholder="Password" name="password" />
+	<i class="ace-icon fa fa-lock"></i>
+</span>
+        </label>
+
+        <div class="space"></div>
+
+        <div class="clearfix">
+            <label class="inline">
+                <input type="checkbox" class="ace" />
+                <span class="lbl"> Remember Me</span>
+            </label>
+
+            <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+                <i class="ace-icon fa fa-key"></i>
+                <span class="bigger-110">Login</span>
+            </button>
+        </div>
+
+        <div class="space-4"></div>
+    </fieldset>
+    </form>
+
+</div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+
+</body>
+
+<!-- Mirrored from ace.jeka.by/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Jan 2019 10:30:06 GMT -->
+</html>
