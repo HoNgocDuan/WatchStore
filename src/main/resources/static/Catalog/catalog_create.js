@@ -1,4 +1,3 @@
-
 function loadCreatCataEvent() {
     $("#form-create-cata").submit(function (event) {
 
@@ -6,11 +5,11 @@ function loadCreatCataEvent() {
         event.preventDefault();
 
     });
-    $("#catalog-create").on("click",function (event) {
+    $("#catalog-create").on("click", function (event) {
         event.preventDefault();
         $('.content').load("Catalog/html/catalog_create.html");
-        setTimeout(function(){
-             createCata();
+        setTimeout(function () {
+            createCata();
         }, 200)
 
     });
@@ -20,7 +19,7 @@ function loadCreatCataEvent() {
 
 
 function createCata() {
-    $('#form-create-cata').submit(function(e) {
+    $('#form-create-cata').submit(function (e) {
         e.preventDefault();
 
         var cata = {};

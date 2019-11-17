@@ -1,4 +1,3 @@
-
 function loadCreatEvent() {
     $("#form-create-manu").submit(function (event) {
 
@@ -6,10 +5,10 @@ function loadCreatEvent() {
         event.preventDefault();
 
     });
-    $("#manu-create").on("click",function (event) {
+    $("#manu-create").on("click", function (event) {
         event.preventDefault();
         $('.content').load("Manufacturer/html/manufacturer_create.html");
-        setTimeout(function(){
+        setTimeout(function () {
             createManu();
         }, 200)
 
@@ -20,7 +19,7 @@ function loadCreatEvent() {
 
 
 function createManu() {
-    $('#form-create-manu').submit(function(e) {
+    $('#form-create-manu').submit(function (e) {
         e.preventDefault();
 
         var manu = {};
