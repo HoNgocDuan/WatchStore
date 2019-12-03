@@ -1,14 +1,16 @@
 package watch.store.mnm.service;
 
+import watch.store.mnm.domain.Manufacturer;
 import watch.store.mnm.domain.User;
+import watch.store.mnm.dto.UserDTO;
 
 import java.util.List;
 
-public interface UserService {
+public interface IUserService {
 
-    List<User> findAll();
+    List<UserDTO> findAll();
 
-    User findById(int id);
+    UserDTO findById(int id);
 
-
+    User create(User user);
 }

@@ -24,5 +24,9 @@ dependencies {
 // https://mvnrepository.com/artifact/org.webjars/jquery
     //them vao de lam jquery
     compile group: 'org.webjars', name: 'jquery', version: '3.3.1'
+// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+
+
 
 }

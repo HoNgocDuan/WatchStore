@@ -1,9 +1,13 @@
 package watch.store.mnm.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import watch.store.mnm.domain.Catalog;
 import watch.store.mnm.dto.CatalogDTO;
+import watch.store.mnm.dto.ManufactureDTO;
 import watch.store.mnm.service.CatalogService;
 
 import java.util.List;
@@ -15,9 +19,9 @@ public class CatalogResource {
     private CatalogService catalogService;
 
     @GetMapping(value = "/cata")
-    public @ResponseBody
-    List<Catalog> findAll(){
-        return catalogService.getAll();
+    public ResponseEntity<List<CatalogDTO>> findAll() {
+
+        return ResponseEntity.ok().body(catalogService.getAll());
     }
 
 //    @GetMapping(name = "/manu/paging")
@@ -27,7 +31,8 @@ public class CatalogResource {
 
 
     @PostMapping(value = "/cata")
-    public @ResponseBody int createCata(@RequestBody CatalogDTO catalog){
+    public @ResponseBody
+    int createCata(@RequestBody CatalogDTO catalog) {
         Catalog catalog1 = new Catalog();
         catalog1.setCatalogName(catalog.getCatalogName());
         catalog1.setCatalogDescription(catalog.getCatalogDescription());
@@ -37,7 +42,8 @@ public class CatalogResource {
     }
 
     @PutMapping(value = "/cata")
-    public @ResponseBody int updateCata(@RequestBody CatalogDTO catalog){
+    public @ResponseBody
+    int updateCata(@RequestBody CatalogDTO catalog) {
         Catalog catalog1 = new Catalog();
         catalog1.setCatalogName(catalog.getCatalogName());
         catalog1.setCatalogDescription(catalog.getCatalogDescription());
@@ -47,12 +53,18 @@ public class CatalogResource {
     }
 
     @GetMapping(value = "/cata/{id}")
-    public @ResponseBody Catalog findById(@PathVariable("id") int id){
+    public @ResponseBody CatalogDTO findById(@PathVariable("id") int id) {
         return catalogService.findById(id);
     }
 
     @DeleteMapping(value = "cata/delete/{id}")
-    public @ResponseBody int deleteById(@PathVariable int id){
+    public @ResponseBody
+    int deleteById(@PathVariable int id) {
         return catalogService.deleteByIdCata(id);
+    }
+
+    @GetMapping(value = "/cata/search/{name}")
+    public @ResponseBody Catalog searchNameByCata(@PathVariable String name) {
+        return catalogService.searchByCata(name);
     }
 }

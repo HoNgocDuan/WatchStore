@@ -1,16 +1,93 @@
-function loadManuEvent() {
-    console.log('Init list event');
+function loadSearchEvent() {
+    console.log('Init serach event');
+
+    var name =
     $.ajax({
-        url: '/manu',
+        url: '/manu/search/ + name',
         type: 'GET',
+    })
+}
+function listEmployeeByPageNumber(numberPage) {
+    $.ajax({
+        url: '/manufacturer/paging',
+        type: 'GET',
+        data:{"numberPage":numberPage},
         dataType: 'json',
         success: function (data) {
             var html = '';
-            data.forEach(function (item, index) {
-                html += "<tr><td>" + item.id + "</td><td>" + item.name + "</td>" +
-                    "<td><a class='detail-id' data-id='" + item.id + "' href='#'>Xem chi tiet</a> |" +
-                    "<a class='delete' data-id='" + item.id + "' href='#'>Xoa</a> " +
-                    "| <a class='update' href='?id=" + item.id + "'>Sua</a></td></tr>"
+            var keys = Object.keys(data);
+            var values = Object.values(data);
+            var pageNumberHtml = "";
+            if(keys>1) {
+                for (var page = 0; page < keys; page++) {
+                    if (keys > 1) {
+                        pageNumberHtml+=" <li class=\"page-item\"><a class=\"page-link\">"+page+"</a></li>";
+                    }
+
+                }
+                $("#page-manu").html(pageNumberHtml);
+            }
+            $.each(data,function (index,item) {
+                $.each(item,function (j,val) {
+                    html += "<tr><td>" + val.id + "</td><td>" + val.name + "</td>" +
+                        "<td><a class='detail-id' data-id='" + val.id + "' href='#'>Xem chi tiet</a> |" +
+                        "<a class='delete' data-id='" + val.id + "' href='#'>Xoa</a> " +
+                        "| <a class='update' href='?id=" + val.id + "'>Sua</a></td></tr>"
+
+                });
+                $('.page-link').on("click",function (event) {
+                    event.preventDefault();
+                    listEmployeeByPageNumber($(this).text());
+                });
+
+            });
+
+            $('#manu_list tbody').html(html);
+            updateEvent();
+            loadManuDetailEvent();
+            deleteEvent();
+            loadCreatEvent();
+
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    })
+}
+function loadManuEvent() {
+    console.log('Init list event');
+    $.ajax({
+        url: '/manufacturer/paging',
+        type: 'GET',
+        data:{"numberPage":0},
+        dataType: 'json',
+        success: function (data) {
+            var html = '';
+            var keys = Object.keys(data);
+            var values = Object.values(data);
+            var pageNumberHtml = "";
+            if(keys>1) {
+                for (var page = 0; page < keys; page++) {
+                    if (keys > 1) {
+                        pageNumberHtml+=" <li class=\"page-item\"><a class=\"page-link\">"+page+"</a></li>";
+                    }
+
+                }
+                $("#page-manu").html(pageNumberHtml);
+            }
+            $.each(data,function (index,item) {
+                $.each(item,function (j,val) {
+                    html += "<tr><td>" + val.id + "</td><td>" + val.name + "</td>" +
+                        "<td><a class='detail-id' data-id='" + val.id + "' href='#'>Xem chi tiet</a> |" +
+                        "<a class='delete' data-id='" + val.id + "' href='#'>Xoa</a> " +
+                        "| <a class='update' href='?id=" + val.id + "'>Sua</a></td></tr>"
+
+                });
+                $('.page-link').on("click",function (event) {
+                    event.preventDefault();
+                    listEmployeeByPageNumber($(this).text());
+                });
+
             });
 
             $('#manu_list tbody').html(html);
@@ -121,7 +198,8 @@ function loadManuDetailEvent() {
 
                     '                </div>\n' +
                     '            </div>\n' +
-                    '        </div>'
+                    '<button type="submit" class="btn btn-primary pull-right" id="manufacturer-detail">Back</button>'+
+                    ' </div>'
                 $('#form-detail-manu').html(html);
             }
 
@@ -131,12 +209,4 @@ function loadManuDetailEvent() {
 
 }
 
-
-
-// $(document).ready(function () {
-//     $("#manufacturer-detail").on("click",function (event) {
-//         $('.content').load("Manufacturer/html/manufacturer.html");
-//         loadManuEvent();
-//     });
-// });
 

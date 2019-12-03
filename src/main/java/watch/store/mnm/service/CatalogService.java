@@ -1,19 +1,22 @@
 package watch.store.mnm.service;
 
 import watch.store.mnm.domain.Catalog;
+import watch.store.mnm.dto.CatalogDTO;
 
 import java.util.List;
 
 public interface CatalogService {
 
-    List<Catalog> getAll();
+    List<CatalogDTO> getAll();
 
     //them du lieu
     int create(Catalog catalog);
 
     int update(Catalog catalog);
 
-    Catalog findById(int id);
+    CatalogDTO findById(int id);
 
     int deleteByIdCata(int id);
+
+    Catalog searchByCata(String name);
 }

@@ -1,18 +1,41 @@
 package watch.store.mnm.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "role")
-public class Role {
+//@NamedEntityGraph(name = "Role.users",
+//        attributeNodes = @NamedAttributeNode("users"))
+public class Role implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id",nullable = false)
     private int id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", unique = true)
     private String name;
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
+
+    public Role() {
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public Role(String name) {
+        this.name = name;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 
     public int getId() {
         return id;
@@ -28,22 +51,5 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @ManyToMany(mappedBy = "roles")
-    private Set<Account> accounts;
-
-    public Set<Account> getAccounts() {
-        return accounts;
-    }
-
-    public Role(String name) {
-        this.name = name;
-    }
-    public Role() {
-    }
-
-    public void setAccounts(Set<Account> accounts) {
-        this.accounts = accounts;
     }
 }

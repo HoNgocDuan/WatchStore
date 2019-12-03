@@ -1,11 +1,15 @@
 package watch.store.mnm.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Table(name = "catalog")
 @Entity
-public class Catalog {
+public class Catalog implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "id")
@@ -14,6 +18,9 @@ public class Catalog {
 
     @Column(name = "name_catalog")
     private String catalogName;
+
+    @ManyToMany(mappedBy = "catalogs")
+    private Set<Products> products;
 
     @Column(name = "title_catalog")
     private String catalogTitle;
@@ -33,13 +40,18 @@ public class Catalog {
     public Catalog() {
     }
 
-    public Catalog(String catalogName, String catalogTitle, String catalogDescription, Date createDate, Date updateDate, String status) {
+    public Catalog(String catalogName, Set<Products> products, String catalogTitle, String catalogDescription, Date createDate, Date updateDate, String status) {
         this.catalogName = catalogName;
+        this.products = products;
         this.catalogTitle = catalogTitle;
         this.catalogDescription = catalogDescription;
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.status = status;
+    }
+
+    public Catalog(String catalogName) {
+        this.catalogName = catalogName;
     }
 
     public int getId() {
@@ -56,6 +68,18 @@ public class Catalog {
 
     public void setCatalogName(String catalogName) {
         this.catalogName = catalogName;
+    }
+
+    public Set<Products> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Products> products) {
+        this.products = products;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public String getCatalogTitle() {

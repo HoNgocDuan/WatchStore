@@ -1,50 +1,191 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/fontend/layout}"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<!-- Mirrored from ace.jeka.by/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Jan 2019 10:30:06 GMT -->
-<body class="login-layout">
-<div class="main-container">
-    <form th:action="@{/login}" method="POST">
-    <fieldset>
-        <label class="block clearfix">
-<span class="block input-icon input-icon-right">
-	<input type="text" class="form-control" placeholder="Username" name="username"/>
-	<i class="ace-icon fa fa-user"></i>
-</span>
-        </label>
 
-        <label class="block clearfix">
-<span class="block input-icon input-icon-right">
-	<input type="password" class="form-control" placeholder="Password" name="password" />
-	<i class="ace-icon fa fa-lock"></i>
-</span>
-        </label>
+<!-- Mirrored from d29u17ylf1ylz9.cloudfront.net/mirora-v2/mirora/login-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Nov 2018 02:31:33 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="meta description">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="fontend/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="fontend/assets/img/icon.png">
 
-        <div class="space"></div>
+    <!-- Title -->
+    <title>Mirora - Watch & Luxury Store Bootstrap 4 Template</title>
 
-        <div class="clearfix">
-            <label class="inline">
-                <input type="checkbox" class="ace" />
-                <span class="lbl"> Remember Me</span>
-            </label>
+    <!-- ************************* CSS Files ************************* -->
 
-            <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
-                <i class="ace-icon fa fa-key"></i>
-                <span class="bigger-110">Login</span>
-            </button>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="fontend/assets/css/bootstrap.min.css">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="fontend/assets/css/font-awesome.min.css">
+
+    <!-- Elegent Icon CSS -->
+    <link rel="stylesheet" href="fontend/assets/css/elegent-icons.css">
+
+    <!-- All Plugins CSS css -->
+    <link rel="stylesheet" href="fontend/assets/css/plugins.css">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="fontend/assets/css/main.css">
+
+    <!-- modernizr JS
+    ============================================ -->
+    <script src="fontend/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+
+<!-- Main Wrapper Start -->
+<div class="wrapper bg--shaft" >
+    <div class="main-content-wrapper" layout:fragment="fontend_content">
+        <div class="login-register-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mb-md--40">
+                        <h2 class="heading-secondary mb--30">Login</h2>
+                        <div class="login-reg-box p-4 bg--2">
+                            <form th:action="@{/login}" method="POST" class="form">
+                                <div class="form__group mb--20">
+                                    <label class="form__label" for="username_email">
+                                        UserName <span>*</span>
+                                    </label>
+                                    <input type="text" placeholder="Username" name="username" id="username_email" class="form__input form__input--2">
+                                </div>
+                                <div class="form__group mb--20">
+                                    <label class="form__label" for="password">
+                                        Password <span>*</span>
+                                    </label>
+                                    <input type="password" placeholder="Password" name="password" id="password" class="form__input form__input--2">
+                                </div>
+                                <div class="form__group d-flex align-items-center">
+                                    <button type="submit" class="btn btn-5 btn-style-1 color-1">Login</button>
+                                    <div class="custom-checkbox ml--20">
+                                        <input type="checkbox" name="sessionStore" id="sessionStore" class="form__checkbox">
+
+                                        <label for="sessionStore" class="form__checkbox--label">Remember me</label>
+                                    </div>
+                                </div>
+                                <a href="#" class="forgot-pass">Forgot your password?</a>
+                            </form>
+                        </div>
+                    </div>
+
+                        <div class="col-lg-6">
+                            <form id="form-create-employee" class="form-horizontal">
+                            <h2 class="heading-secondary mb--30">Đăng ký</h2>
+                            <div class="login-reg-box p-4 bg--2">
+
+                                <div class="form__group mb--20">
+                                    <label class="form__label">
+                                        Tên Đăng Nhập
+                                    </label>
+                                    <input type="text" class="form__input form__input--2" id="username" placeholder="Tên Đăng Nhập">
+                                </div>
+                                <div class="form__group mb--20">
+                                    <label class="form__label">
+                                        Mật khẩu
+                                    </label>
+                                    <input type="password" class="form__input form__input--2" id="password1" placeholder="Mật khẩu">
+                                </div>
+                                <div class="form__group mb--20">
+                                    <label class="form__label">
+                                        Nhập lại mật khẩu
+                                    </label>
+                                    <input type="password" class="form__input form__input--2" id="retypepassword" placeholder="Mật khẩu">
+                                </div>
+                                <div class="form-row mb--30">
+                                    <div class="form__group col-md-6 mb-sm--30">
+                                        <label class="form__label">
+                                            Họ
+                                        </label>
+                                        <input type="text" class="form__input form__input--2" id="firstname" placeholder="Họ">
+                                    </div>
+                                    <div class="form__group col-md-6">
+                                        <label class="form__label">
+                                            Tên
+                                        </label>
+                                        <input type="password" class="form__input form__input--2" id="lastname" placeholder="Tên">
+                                    </div>
+                                </div>
+                                <div class="form-row mb--30">
+                                    <div class="form__group col-md-6 mb-sm--30">
+                                        <label class="form__label">
+                                            Giới tính
+                                        </label>
+                                        <select class="form__input form__input--2" id="gender">
+                                            <option value="0">Nam</option>
+                                            <option value="1">Nữ</option>
+                                            <option value="2">Khác</option>
+                                        </select>
+                                    </div>
+                                    <div class="form__group col-md-6">
+                                        <div class="form-group">
+                                            <label class="form__label">Ngày Sinh</label>
+                                            <div class="col-md-9">
+                                                <input type="date" class="form__input form__input--2" id="birth-date" placeholder="dd/mm/yyyy"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form__group mb--20">
+                                    <label class="form__label">
+                                        Địa chỉ
+                                    </label>
+                                    <input type="text" class="form__input form__input--2" id="address" placeholder="Địa chỉ">
+                                </div>
+                                <div class="form__group mb--20">
+                                    <label class="form__label">
+                                        Số điện thoại
+                                    </label>
+                                    <input type="text" class="form__input form__input--2" id="phonenumber" placeholder="123-456-7890">
+                                </div>
+                                <div class="form__group">
+                                    <button type="submit" class="btn btn-5 btn-style-2" id="button-submit-employee">Đăng ký</button>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+
+
+                </div>
+            </div>
         </div>
+    </div>
+<!---->
 
-        <div class="space-4"></div>
-    </fieldset>
-    </form>
+</div>
+<!-- Main Wrapper End -->
 
-</div><!-- /.main-container -->
 
-<!-- basic scripts -->
+<!-- ************************* JS Files ************************* -->
 
-<!--[if !IE]> -->
+<!-- jQuery JS -->
+<script src="fontend/assets/js/vendor/jquery.min.js"></script>
+
+<!-- Bootstrap and Popper Bundle JS -->
+<script src="fontend/assets/js/bootstrap.bundle.min.js"></script>
+
+<!-- All Plugins Js -->
+<script src="fontend/assets/js/plugins.js"></script>
+<!-- Ajax Mail Js -->
+<script src="fontend/assets/js/ajax-mail.js"></script>
+
+<!-- Main JS -->
+<script src="fontend/assets/js/main.js"></script>
 
 </body>
 
-<!-- Mirrored from ace.jeka.by/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Jan 2019 10:30:06 GMT -->
+
+<!-- Mirrored from d29u17ylf1ylz9.cloudfront.net/mirora-v2/mirora/login-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Nov 2018 02:31:33 GMT -->
 </html>

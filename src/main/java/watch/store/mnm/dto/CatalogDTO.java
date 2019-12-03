@@ -1,6 +1,7 @@
 package watch.store.mnm.dto;
 
 public class CatalogDTO {
+    private int id;
 
     private String catalogName;
 
@@ -9,6 +10,14 @@ public class CatalogDTO {
     private String catalogDescription;
 
     private String status;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCatalogName() {
         return catalogName;

@@ -38,7 +38,7 @@ function createCata() {
             cache: false,
             timeout: 600000,
             success: function (data) {
-                $('.content').load("Catalog/html/catalogdetail.html");
+                $('.content').load("Catalog/html/catalog.html");
                 setTimeout(function () {
                     loadCatalogEvent();
                 }, 200);
